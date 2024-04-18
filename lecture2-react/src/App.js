@@ -1,3 +1,4 @@
+import { useState } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import { First } from "./First";
@@ -28,6 +29,7 @@ const products = [
 // TODO: Build Students component and it would display [{id, name, age}]
 
 function App() {
+  const [counter, setCounter] = useState(0);
   return (
     <div
       style={{
@@ -53,7 +55,7 @@ function App() {
 
       <Products products={products} />
 
-      <Counter value={0} />
+      <Counter value={counter} setCounter={setCounter} />
     </div>
   );
 }
