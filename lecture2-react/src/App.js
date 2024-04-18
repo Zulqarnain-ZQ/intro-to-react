@@ -5,6 +5,7 @@ import { Second } from "./Second";
 import TestClass from "./TestClass";
 import { MyIntro } from "./MyIntro";
 import { Products } from "./Products";
+import { Counter } from "./Counter";
 
 const products = [
   {
@@ -51,6 +52,8 @@ function App() {
       />
 
       <Products products={products} />
+
+      <Counter value={0} />
     </div>
   );
 }
