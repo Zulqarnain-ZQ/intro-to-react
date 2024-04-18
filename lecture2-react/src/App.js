@@ -1,9 +1,9 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { First } from "./First";
-import {Second}from "./Second";
-import TestClass from "./TestClass"
-
+import { Second } from "./Second";
+import TestClass from "./TestClass";
+import { PropComponent } from "./PropComponent";
 
 function App() {
   return (
@@ -26,6 +26,16 @@ function App() {
       <First />
       <Second />
       <TestClass />
+      <PropComponent
+        firstName="Muhammad"
+        lastName="Zulqarnain"
+        age={30}
+        male={true}
+        obj={{
+          firstName: "Muhammad",
+          lastName: "Zulqarnain",
+        }}
+      />
     </div>
   );
 }
