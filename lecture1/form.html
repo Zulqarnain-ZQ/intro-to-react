@@ -1,0 +1,52 @@
+<html>
+    <head>
+
+            </head>
+
+    <body>
+        
+
+            <div>
+                <span>Enter your email address</span>
+            <input id="emailInput" type="email" required /> 
+        </div>
+
+        <div>
+            <span> Enter your password</span>
+            <input type="password" required /> 
+        </div>
+
+        <button type="submit" id="button" >Login</button>
+        
+    </body>
+
+    <script>
+        const emailInput = document.getElementById("emailInput");
+        const button = document.getElementById("button");
+
+        function verifyEmailAddress(email){
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+
+        }
+
+        button.addEventListener("click", function() {
+            const email = emailInput.value;
+
+            const isValid = verifyEmailAddress(email);
+
+            if (isValid) {
+
+alert('Email address is valid');
+} else {
+alert('Email address is not valid');
+}
+
+        })
+
+
+
+    </script>
+
+
+</html>
