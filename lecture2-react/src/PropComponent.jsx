@@ -1,6 +1,6 @@
 import styles from './PropComponent.module.css'
 
-/**
+/** TODO: Change JSX and css styles to make the PropComponent like that
  * FirstName: {Muhammad}
  * LastName: {Zulqarnain}
  * Age: {30}
