@@ -1,16 +1,11 @@
 import { First } from "./First"
-
+import styles from "./Second.module.css"
 
 export function Second(){
-    return <div style={{display:'flex', 
-    flexDirection:'column', 
-    opacity:1, 
-    backgroundColor: "red",
-    fontSize: "30px",
-    gap: "20px",
-    padding: "30px",
-    margin: "10px"
-      }}>
+
+    
+
+    return <div className={styles.container}>
         Hello from functional component
         <First />
         </div>
