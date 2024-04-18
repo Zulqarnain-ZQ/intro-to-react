@@ -5,14 +5,31 @@ import styles from './PropComponent.module.css'
  * LastName: {Zulqarnain}
  * Age: {30}
  * Gender: {Male}
+ * TODO: Address
+ * Address: {App}
  */
 
 export function PropComponent({firstName, lastName, age, male, obj}){
 
+    
+
+
     return <div className={styles.container}>
-        Hello, my name is {firstName} {lastName} 
-        with age of {age}  {male ?"true": 'false'}
-        
-        <div style={{backgroundColor: 'purple'}}>{JSON.stringify(obj)}</div>
+        <div className={styles.labelContainer}>
+            <div>First name: </div>
+            <div>{firstName}</div>
+        </div>
+        <div className={styles.labelContainer}>
+            <div>Last name: </div>
+            <div>{lastName}</div>
+        </div>
+        <div className={styles.labelContainer}>
+            <div>Age: </div>
+            <div>{age}</div>
+        </div>
+        <div className={styles.labelContainer}>
+            <div>Gender: </div>
+            <div>{male ? "Male": "Female"}</div>
+        </div>
         </div>
 }
