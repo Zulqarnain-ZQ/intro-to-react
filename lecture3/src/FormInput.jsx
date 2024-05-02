@@ -1,8 +1,11 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import styles from "./FormInput.module.css"
 
+/**
+ * TODO: What changes would be made on FormInput to store users data for multiple users?
+ */
 
-export function FormInput({onSaveData}){
+export function FormInput({onSaveData, setIsSaving}){
 
 const [userData, setUserData] = useState({
     firstName: '',
@@ -12,12 +15,23 @@ const [userData, setUserData] = useState({
     address: ''
 });
 
+const [isSubmitted, setIsSubmitted] = useState(false);
+
 function handleUpdate(key, value){
     setUserData({
         ...userData,
         [key]: value
     })
 }
+
+/** Simulate API call effect here once isSubmitted is set to true   */
+useEffect(() => {
+
+    if(isSubmitted){
+            setTimeout(() => {onSaveData(userData); setIsSaving(false)}, 1000 )
+    }
+
+}, [userData, isSubmitted])
 
 
 
@@ -45,7 +59,7 @@ return <div className={styles.container}>
         </select> 
     </div>
 
-    <button onClick={() => onSaveData(userData)}>Save data</button>
+    <button onClick={() => {setIsSubmitted(true); setIsSaving(true)}}>Save data</button>
 </div>
 
 

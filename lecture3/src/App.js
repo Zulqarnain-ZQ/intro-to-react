@@ -31,6 +31,7 @@ const products = [
 
 function App() {
   const [userData, setUserData] = useState(null);
+  const [isSaving, setIsSaving] = useState(false);
 
   // console.log("userData", userData);
 
@@ -47,7 +48,9 @@ function App() {
         flexDirection: "column",
       }}
     >
-      <FormInput onSaveData={onSaveData} />
+      <FormInput onSaveData={onSaveData} setIsSaving={setIsSaving} />
+
+      {isSaving && <div>Saving users data...</div>}
 
       <Calculator />
 

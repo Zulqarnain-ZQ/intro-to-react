@@ -15,6 +15,13 @@ import styles from './FormInput.module.css'
  * When to use Array.map vs Array.reduce functions
  * 
  * useMemo => Goal of useMemo is memoize computations in your code
+ * 
+ * useEffect => 
+ * Button => Makes an API call to backend(n ode server) => 
+ * 1) Make an API call
+ * 2) Wait for response from the server
+ * 3) Receive API response
+ * 4) Show API response on UI
  */
 
 
