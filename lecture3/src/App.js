@@ -29,7 +29,14 @@ const products = [
 // TODO: Build Students component and it would display [{id, name, age}]
 
 function App() {
-  const [counter, setCounter] = useState(0);
+  const [userData, setUserData] = useState(null);
+
+  console.log("userData", userData);
+
+  function onSaveData(user) {
+    setUserData(user);
+  }
+
   return (
     <div
       style={{
@@ -39,25 +46,16 @@ function App() {
         flexDirection: "column",
       }}
     >
-      <First />
-      <Second />
-      <TestClass />
-      <MyIntro
-        firstName="Muhammad"
-        lastName="Zulqarnain"
-        age={30}
-        male={true}
-        obj={{
-          firstName: "Muhammad",
-          lastName: "Zulqarnain",
-        }}
-      />
+      <FormInput onSaveData={onSaveData} />
 
-      <Products products={products} />
-
-      <Counter value={counter} setCounter={setCounter} />
-
-      <FormInput />
+      {userData && (
+        <MyIntro
+          firstName={userData.firstName}
+          lastName={userData.lastName}
+          age={userData.age}
+          male={userData.gender === "Male"}
+        />
+      )}
     </div>
   );
 }

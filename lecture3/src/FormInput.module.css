@@ -9,4 +9,5 @@
 .form {
     display: grid;
     grid-template-columns: 200px 500px;
+    gap: 20px;
 }
