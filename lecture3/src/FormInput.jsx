@@ -8,10 +8,20 @@ import styles from "./FormInput.module.css"
  */
 export function FormInput({onSaveData}){
 
-const [firstName, setFirstName] = useState('');
-const [lastName, setLastName] = useState('');
-const [age, setAge] = useState(0);
-const [gender, setGender] = useState('Male');
+const [userData, setUserData] = useState({
+    firstName: '',
+    lastName: '',
+    age: 0,
+    gender: 'Male',
+    address: ''
+});
+
+function handleUpdate(key, value){
+    setUserData({
+        ...userData,
+        [key]: value
+    })
+}
 
 
 
@@ -21,27 +31,27 @@ return <div className={styles.container}>
 
     <div className={styles.form}>
         <label>Enter first name</label>
-        <input value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+        <input value={userData.firstName} onChange={(e) => {
+           handleUpdate('firstName', e.target.value)
+        }} />
 
         <label>Enter last name</label>
-        <input value={lastName} onChange={(e) => setLastName(e.target.value)} />
+        <input value={userData.lastName} onChange={(e) => handleUpdate('lastName',  e.target.value)} />
 
         <label>Enter your age</label>
-        <input value={age} type="number" onChange={(e) => setAge(e.target.value)} />
+        <input value={userData.age} type="number" onChange={(e) => handleUpdate('age',  e.target.value)} />
+
+        <label>Enter your address</label>
+        <input value={userData.address}  onChange={(e) => handleUpdate('address',  e.target.value)} />
 
         <label>Enter your gender</label>
-         <select value={gender} onChange={(e) => setGender(e.target.value)}>
+         <select value={userData.gender} onChange={(e) => handleUpdate('gender',  e.target.value)}>
             <option value='Male'>Male</option>
             <option value='Female'>Female</option>
         </select> 
     </div>
 
-    <button onClick={() => onSaveData({
-        firstName,
-        lastName,
-        age,
-        gender
-    })}>Save data</button>
+    <button onClick={() => onSaveData(userData)}>Save data</button>
 </div>
 
 
