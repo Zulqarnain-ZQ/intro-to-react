@@ -1,5 +1,4 @@
 import { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { First } from "./First";
 import { Second } from "./Second";
@@ -7,6 +6,7 @@ import TestClass from "./TestClass";
 import { MyIntro } from "./MyIntro";
 import { Products } from "./Products";
 import { Counter } from "./Counter";
+import { FormInput } from "./FormInput";
 
 const products = [
   {
@@ -56,6 +56,8 @@ function App() {
       <Products products={products} />
 
       <Counter value={counter} setCounter={setCounter} />
+
+      <FormInput />
     </div>
   );
 }
