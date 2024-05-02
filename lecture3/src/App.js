@@ -7,6 +7,7 @@ import { MyIntro } from "./MyIntro";
 import { Products } from "./Products";
 import { Counter } from "./Counter";
 import { FormInput } from "./FormInput";
+import { Calculator } from "./Calculator";
 
 const products = [
   {
@@ -31,7 +32,7 @@ const products = [
 function App() {
   const [userData, setUserData] = useState(null);
 
-  console.log("userData", userData);
+  // console.log("userData", userData);
 
   function onSaveData(user) {
     setUserData(user);
@@ -47,6 +48,8 @@ function App() {
       }}
     >
       <FormInput onSaveData={onSaveData} />
+
+      <Calculator />
 
       {userData && (
         <MyIntro

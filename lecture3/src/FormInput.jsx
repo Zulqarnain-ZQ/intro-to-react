@@ -1,11 +1,7 @@
 import {useState} from 'react';
 import styles from "./FormInput.module.css"
 
-/**
- * TODO: Add inputs for firstName, lastName and age
- * 
- * Add a button to show inputted data
- */
+
 export function FormInput({onSaveData}){
 
 const [userData, setUserData] = useState({
@@ -31,9 +27,7 @@ return <div className={styles.container}>
 
     <div className={styles.form}>
         <label>Enter first name</label>
-        <input value={userData.firstName} onChange={(e) => {
-           handleUpdate('firstName', e.target.value)
-        }} />
+        <input value={userData.firstName} onChange={(e) => handleUpdate('firstName',  e.target.value)} />
 
         <label>Enter last name</label>
         <input value={userData.lastName} onChange={(e) => handleUpdate('lastName',  e.target.value)} />
