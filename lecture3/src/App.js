@@ -8,6 +8,7 @@ import { Products } from "./Products";
 import { Counter } from "./Counter";
 import { FormInput } from "./FormInput";
 import { Calculator } from "./Calculator";
+import { Carousel } from "./Carousel";
 
 const products = [
   {
@@ -62,6 +63,14 @@ function App() {
           male={userData.gender === "Male"}
         />
       )}
+
+      <Carousel
+        images={[
+          "https://images.unsplash.com/photo-1519500099198-fd81846b8f03?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=30",
+          "https://images.unsplash.com/photo-1517052269751-4ae3ad86cc59?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=30",
+          "https://images.unsplash.com/photo-1459909633680-206dc5c67abb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=30",
+        ]}
+      />
     </div>
   );
 }
