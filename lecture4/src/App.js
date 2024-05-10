@@ -9,6 +9,7 @@ import { Counter } from "./Counter";
 import { FormInput } from "./FormInput";
 import { Calculator } from "./Calculator";
 import { Carousel } from "./Carousel";
+import { TipOfTheDay } from "./TipOfTheDay";
 
 const products = [
   {
@@ -30,6 +31,7 @@ const products = [
 
 // TODO: Build Students component and it would display [{id, name, age}]
 
+/** Daily Tip of the day component:: Third party API to fetch the tip of the day */
 function App() {
   const [userData, setUserData] = useState(null);
   const [isSaving, setIsSaving] = useState(false);
@@ -49,6 +51,8 @@ function App() {
         flexDirection: "column",
       }}
     >
+
+      <TipOfTheDay />
       <FormInput onSaveData={onSaveData} setIsSaving={setIsSaving} />
 
       {isSaving && <div>Saving users data...</div>}
@@ -71,6 +75,8 @@ function App() {
           "https://images.unsplash.com/photo-1459909633680-206dc5c67abb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=30",
         ]}
       />
+
+
     </div>
   );
 }
