@@ -12,6 +12,7 @@ import { Carousel } from "./Carousel";
 import { TipOfTheDay } from "./TipOfTheDay";
 import { PokemonList } from "./PokemonList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { PokemonDetails } from "./PokemonDetails";
 
 const products = [
   {
@@ -88,9 +89,15 @@ function App() {
       <TipOfTheDay />
       <BrowserRouter>
         <Routes>
-          <Route path="/pokemon" element={<PokemonList />} />
+          <Route path="/pokemon/:id" exact element={<PokemonDetails />} />
+          <Route path="/pokemon" exact element={<PokemonList />}></Route>
           <Route path="/calculator" element={<Calculator />} />
-          <Route path="/register" element={<FormInput onSaveData={onSaveData} setIsSaving={setIsSaving} />} />
+          <Route
+            path="/register"
+            element={
+              <FormInput onSaveData={onSaveData} setIsSaving={setIsSaving} />
+            }
+          />
           <Route
             path="/carousel"
             element={
