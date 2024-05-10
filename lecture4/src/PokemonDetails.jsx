@@ -3,7 +3,7 @@ import axios from 'axios'
 import {useNavigate, useParams} from 'react-router-dom' 
 import styles from "./PokemonDetails.module.css"
 
-/** Replacing fetch with axios */
+/** TODO: Please try to implement this with Card component from MUI */
 export function PokemonDetails(){
 
     const params = useParams();
