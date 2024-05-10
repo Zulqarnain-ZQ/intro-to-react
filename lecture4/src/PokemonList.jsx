@@ -1,6 +1,13 @@
-import { useEffect, useState } from "react"
+import { useMemo, useEffect, useState } from "react"
 import axios from 'axios'
-import {useNavigate} from 'react-router-dom' 
+import {useNavigate} from 'react-router-dom';
+import TableContainer from '@mui/material/TableContainer';
+import TableRow from '@mui/material/TableRow';
+import TableCell from '@mui/material/TableCell';
+import TableBody from '@mui/material/TableBody'; 
+import TableHead from '@mui/material/TableHead'; 
+import Table from "@mui/material/Table";
+import Link from "@mui/material/Link";
 import styles from "./PokemonList.module.css"
 
 /** Replacing fetch with axios */
@@ -9,8 +16,23 @@ export function PokemonList(){
     const [error, setError] = useState(null);
     const [pokemonList, setPokemonList]= useState([]);
     const [loading, setLoading]= useState(true);
-    const [pokemonUrl, setPokemonUrl] = useState(null);
     const navigate = useNavigate();
+
+    const columns = useMemo(() => [
+        {
+            header:  'Name',
+            fieldKey: 'name'
+        },  
+        {
+            
+            header:  'Action',
+            render:(item) =>{
+                const urlSegments =item.url.split('/'); 
+                const id = urlSegments[urlSegments.length-2];
+                return <Link href={`/pokemon/${id}`}>See details</Link>}
+        
+        }
+], [])
 
  
     useEffect(() =>{
@@ -45,20 +67,24 @@ export function PokemonList(){
         <h1>Pokemon list </h1>
         {loading && <span>Please wait.....</span>}       
         {!!pokemonList.length ? (
-            <div className={styles.grid}>
-            {pokemonList.map((pokemon, index) =>
-            (
-            <>
-            <span className={styles.tip} key={index}>{pokemon.name}</span>
-            <button onClick={() =>{
-                const urlSegments = pokemon.url.split('/');
-                console.log('urlSegments',urlSegments);
-                const id = urlSegments[urlSegments.length-2];
-                navigate(`/pokemon/${id}`);
-            }}>Show details</button>
-            </>
-            ))}
-            </div>
+            <TableContainer>
+                <Table stickyHeader>
+                    <TableHead>
+                        <TableRow>
+                            {columns.map((column,index) => <TableCell key={index} >{column.header}</TableCell>)}
+                        </TableRow>
+                    </TableHead>
+
+                    <TableBody>
+                    {pokemonList.map((pokemon, index) => {
+                        return <TableRow key={index}>
+                            {columns.map((column) => <TableCell>{column.render ? column.render(pokemon) : pokemon[column.fieldKey]}</TableCell>)}
+                        </TableRow>
+                    })}
+                    </TableBody>
+                </Table>
+
+            </TableContainer>
         )
          : <span className={styles.error}>{error}</span>}
     </div>   

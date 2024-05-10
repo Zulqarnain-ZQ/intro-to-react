@@ -13,6 +13,7 @@ import { TipOfTheDay } from "./TipOfTheDay";
 import { PokemonList } from "./PokemonList";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { PokemonDetails } from "./PokemonDetails";
+import Link from "@mui/material/Link";
 
 const products = [
   {
@@ -84,9 +85,15 @@ function App() {
 
   return (
     <div>
-      <h1>My app</h1>
+      <div style={{ display: "flex", gap: "20px", marginBottom: "50px" }}>
+        <Link href="/pokemon">Pokemon</Link>
+        <Link href="/calculator">Calculator</Link>
+        <Link href="/register">Register</Link>
+        <Link href="/carousel">Carousel</Link>
+      </div>
 
       <TipOfTheDay />
+
       <BrowserRouter>
         <Routes>
           <Route path="/pokemon/:id" exact element={<PokemonDetails />} />

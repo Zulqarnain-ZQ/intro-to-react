@@ -39,7 +39,7 @@ export function TipOfTheDay(){
         }
     }
 
-        fetchTipOfTheDay()
+        setTimeout(() => fetchTipOfTheDay(), 1000)
     }, [])
 
     return <div className={styles.container}>
