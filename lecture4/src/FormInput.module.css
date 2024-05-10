@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    padding: 20px;
+    margin: auto;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 200px 500px;
+    gap: 20px;
+}
