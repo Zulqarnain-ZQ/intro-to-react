@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import axios from 'axios'
 import styles from "./TipOfTheDay.module.css"
 
 /** Replacing fetch with axios */
@@ -16,18 +17,17 @@ export function TipOfTheDay(){
          */
 
         async function fetchTipOfTheDay(){
-            const response = await fetch("https://api.adviceslip.com/advice");
+            const response = await axios.get("https://api.adviceslip.com/advice");
             
-            if(!response.ok){
+            if(response.status !== 200){
                 setError("Failed to fetch API response");
                 return;
             }
 
-            const data = await response.json();
+            console.log('Axios response', response);
 
-            console.log('response json', data);
-
-            setTip(data.slip.advice);
+           
+            setTip(response.data.slip.advice);
 
         }
 
