@@ -18,6 +18,7 @@ export function TipOfTheDay(){
          */
 
         async function fetchTipOfTheDay(){
+            try{
             const response = await axios.get("https://api.adviceslip.com/advice");
             
 
@@ -33,6 +34,10 @@ export function TipOfTheDay(){
             setTip(response.data.slip.advice);
 
         }
+        catch(error){
+            setError("Failed to fetch API response");
+        }
+    }
 
         fetchTipOfTheDay()
     }, [])

@@ -10,6 +10,7 @@ import { FormInput } from "./FormInput";
 import { Calculator } from "./Calculator";
 import { Carousel } from "./Carousel";
 import { TipOfTheDay } from "./TipOfTheDay";
+import {PokemonList} from "./PokemonList";
 
 const products = [
   {
@@ -53,6 +54,8 @@ function App() {
     >
 
       <TipOfTheDay />
+
+      <PokemonList />
       <FormInput onSaveData={onSaveData} setIsSaving={setIsSaving} />
 
       {isSaving && <div>Saving users data...</div>}

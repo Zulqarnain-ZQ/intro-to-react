@@ -1,0 +1,23 @@
+.container {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+}
+
+.tip {
+    font-weight: 800;
+    font-size: 18px;
+    font-style: italic;
+}
+
+.error {
+    color: red;
+    font-weight: 800;
+    font-size: 18px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, auto 100px);
+    gap: 50px;
+}
