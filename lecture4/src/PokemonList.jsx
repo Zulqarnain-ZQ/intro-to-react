@@ -8,6 +8,7 @@ export function PokemonList(){
     const [error, setError] = useState(null);
     const [pokemonList, setPokemonList]= useState([]);
     const [loading, setLoading]= useState(true);
+    const [pokemonUrl, setPokemonUrl] = useState(null);
  
     useEffect(() =>{
         
@@ -36,6 +37,36 @@ export function PokemonList(){
         fetchPokemonList()
     }, [])
 
+    useEffect(() =>{
+        
+
+        async function fetchPokemonDetails(){
+            try{
+
+                if(!pokemonUrl) return;
+
+            const response = await axios.get(pokemonUrl);
+            
+
+            setLoading(false);
+            if(response.status !== 200){
+                setError("Failed to fetch API response");
+                return;
+            }
+
+            console.log('Specific Pokemon axios response', response);
+
+           
+            //setPokemonList(response.data.results);
+        }
+        catch(err){
+            setError("Failed to fetch API response");
+        }
+        }
+
+        fetchPokemonDetails()
+    }, [pokemonUrl])
+
     return <div className={styles.container}>
         <h1>Pokemon list </h1>
         {loading && <span>Please wait.....</span>}       
@@ -45,7 +76,10 @@ export function PokemonList(){
             (
             <>
             <span className={styles.tip} key={index}>{pokemon.name}</span>
-            <button>Show details</button>
+            <button onClick={() =>{
+                setLoading(true);
+                setPokemonUrl(pokemon.url)
+            }}>Show details</button>
             </>
             ))}
             </div>
