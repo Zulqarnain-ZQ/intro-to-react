@@ -1,6 +1,11 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
+import styles from "./TipOfTheDay.module.css"
 
+/** Replacing fetch with axios */
 export function TipOfTheDay(){
+
+    const [error, setError] = useState(null);
+    const [tip, setTip]= useState(null);
  
     useEffect(() =>{
         /** 4 step process of API calls
@@ -11,14 +16,29 @@ export function TipOfTheDay(){
          */
 
         async function fetchTipOfTheDay(){
-            const data = await fetch("https://api.adviceslip.com/advice");
-            console.log('response data',data);
+            const response = await fetch("https://api.adviceslip.com/advice");
+            
+            if(!response.ok){
+                setError("Failed to fetch API response");
+                return;
+            }
+
+            const data = await response.json();
+
+            console.log('response json', data);
+
+            setTip(data.slip.advice);
 
         }
 
         fetchTipOfTheDay()
     }, [])
 
-    return <div>Tip of the day (In progress)</div>   
+    return <div className={styles.container}>
+        <h1>Tip of the day </h1>
+        
+        {!!tip ? (<span className={styles.tip}>{tip}</span>)
+         : <span className={styles.error}>{error}</span>}
+    </div>   
     
 }
