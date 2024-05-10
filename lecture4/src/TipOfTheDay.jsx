@@ -7,6 +7,7 @@ export function TipOfTheDay(){
 
     const [error, setError] = useState(null);
     const [tip, setTip]= useState(null);
+    const [loading, setLoading]= useState(true);
  
     useEffect(() =>{
         /** 4 step process of API calls
@@ -19,6 +20,8 @@ export function TipOfTheDay(){
         async function fetchTipOfTheDay(){
             const response = await axios.get("https://api.adviceslip.com/advice");
             
+
+            setLoading(false);
             if(response.status !== 200){
                 setError("Failed to fetch API response");
                 return;
@@ -36,7 +39,7 @@ export function TipOfTheDay(){
 
     return <div className={styles.container}>
         <h1>Tip of the day </h1>
-        
+        {loading && <span>Please wait.....</span>}       
         {!!tip ? (<span className={styles.tip}>{tip}</span>)
          : <span className={styles.error}>{error}</span>}
     </div>   
